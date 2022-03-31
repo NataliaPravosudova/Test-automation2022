@@ -3,8 +3,8 @@ package task2;
 public class Calc {
     public static void main(String[] args){
 
-        double a=2.666;
-        double b=10;
+        double a=260.4;
+        double b=195;
         System.out.println("a= "+a);
         System.out.println("b= "+b);
         System.out.println();
