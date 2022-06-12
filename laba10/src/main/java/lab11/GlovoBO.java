@@ -10,10 +10,10 @@ public class GlovoBO {
 
     private HomePO homePO;
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
 
     }
-    static SignUpPO signUpPO;
+    SignUpPO signUpPO;
 
     public GlovoBO(WebDriver chromeDriver){
         this.chromeDriver=chromeDriver;
@@ -28,11 +28,11 @@ public class GlovoBO {
     public void signUp() {signUpPO = homePO.clickSignUp();
     }
 
-    public  static void verifySingUpPageIsOpen() {
-        Assert.assertTrue(SignUpPO.isOpen());
+    public void verifySingUpPageIsOpen() {
+        Assert.assertTrue(new SignUpPO(chromeDriver).isOpen());
     }
 
-    public static void putLogIn(String userLogIn) {
+    public void putLogIn(String userLogIn) {
         signUpPO.insertLogIn(userLogIn).clickSignUp();
     }
 

@@ -1,0 +1,5 @@
+Login,Name,Password,Role
+Tester1,Andriy,111111,reporter
+Tester2,Petro,111111,reporter
+Dev1,Oleg,111111,developer
+Dev2,Taras,111111,developer

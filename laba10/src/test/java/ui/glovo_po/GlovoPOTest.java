@@ -48,7 +48,7 @@ public class GlovoPOTest  extends BaseUITest {
         glovoBO.verifySingUpPageIsOpen();
 
         //put Log in
-        GlovoBO.putLogIn(userLogIn);
+        new GlovoBO(chromeDriver.get()).putLogIn(userLogIn);
     }
 
     @AfterTest

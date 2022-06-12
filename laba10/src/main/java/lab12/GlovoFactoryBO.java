@@ -12,7 +12,7 @@ public class GlovoFactoryBO {
 
     private HomeFactoryPO homePO;
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
 
     }
     SignUpFactoryPO signUpPO;
@@ -35,7 +35,7 @@ public class GlovoFactoryBO {
 
     @Step
     public void verifySingUpPageIsOpen() {
-        Assert.assertTrue(SignUpPO.isOpen());
+        Assert.assertTrue(new SignUpPO(chromeDriver).isOpen());
 
     }
     @Step
