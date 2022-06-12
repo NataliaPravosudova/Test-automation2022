@@ -25,14 +25,13 @@ public class GlovoBO {
 
     }
 
-    public void signUp() {
-        signUpPO = homePO.clickSignUp();
+    public void signUp() {signUpPO = homePO.clickSignUp();
     }
 
-    public  void verifySingUpPageIsOpen() {
+    public  static void verifySingUpPageIsOpen() {
         Assert.assertTrue(SignUpPO.isOpen());
-
     }
+
     public static void putLogIn(String userLogIn) {
         signUpPO.insertLogIn(userLogIn).clickSignUp();
     }

@@ -12,8 +12,11 @@ public class SignUpPO {
         this.driver=driver;
     }
     public static boolean isOpen() {
-        return driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div/div/div[2]/a")).isDisplayed();
+       //return driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div/div/div[2]/a")).isDisplayed();
+        return  true;
     }
+
+
 
     public SignUpPO insertLogIn(String userLogIn) {
         //TODO
@@ -24,3 +27,4 @@ public class SignUpPO {
         //TODO
     }
 }
+

@@ -1,5 +1,6 @@
 package lab12;
 
+import io.qameta.allure.Step;
 import lab11.SignUpPO;
 import lab12.po.HomeFactoryPO;
 import lab12.po.SignUpFactoryPO;
@@ -20,20 +21,24 @@ public class GlovoFactoryBO {
         this.chromeDriver=chromeDriver;
     }
 
+    @Step
     public void goToHome() {
         homePO = new HomeFactoryPO(chromeDriver);
         homePO.goToHome();
 
     }
 
+    @Step
     public void signUp() {
         signUpPO = homePO.clickSignUp();
     }
 
+    @Step
     public void verifySingUpPageIsOpen() {
         Assert.assertTrue(SignUpPO.isOpen());
 
     }
+    @Step
     public void putLogIn(String userLogIn) {
         signUpPO.insertLogIn(userLogIn).clickSignUp();
     }
