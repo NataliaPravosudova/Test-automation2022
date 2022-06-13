@@ -1,7 +1,7 @@
 package framework.PO;
 
-import lab12.decorator.MyFieldDecorator;
-import lab12.decorator.MyInput;
+import framework.decorator.MyFieldDecorator;
+import framework.decorator.MyInput;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,27 +32,10 @@ public class LoginPO {
     private MyInput searchField;
 
 
-//    @FindBy(xpath = "//*[@id=\"profile-dropdown\"]/button")
-//    private WebElement myProfile;
-//
-//    @FindBy(xpath = "//*[@id=\"profile-dropdown\"]/div[2]/ul/li[5]/a")
-//    private WebElement libraryButton;
-//
-//    @FindBy(xpath = "//*[@id=\"component-home-new-home-landing-%2fhome\"]/div/div[2]/div/div/h2")
-//    private WebElement welcomeLabel;
-
 
 
     private static WebDriver driver;
 
-//    public void MyProfileClick(){
-//        myProfile.click();
-//    }
-//
-//    public LibraryPO LibraryClick(){
-//        libraryButton.click();
-//        return new LibraryPO(driver);
-//    }
     public LoginPO(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(new MyFieldDecorator(driver), this);
@@ -66,14 +49,12 @@ public class LoginPO {
         return userImage.isDisplayed();
     }
 
-//    public static SearchPO SearchField() {
-//        searchField.click();
-//        return this;
-//    }
 
     public LoginPO insertLogin(String userLogin, String password) {
-        loginInput.input(userLogin);
-        passwordInput.input(password);
+        //loginInput.input(userLogin);
+        loginInput.inputNotNull(userLogin);
+        //passwordInput.input(password);
+        passwordInput.inputNotNull(password);
 
         return this;
     }
@@ -88,9 +69,6 @@ public class LoginPO {
         return new SearchPO(driver);
     }
 
-//    public boolean checkWelcome(){
-//        return welcomeLabel.isDisplayed();
-//    }
 
 
     public void inputSearch(String searchWord){

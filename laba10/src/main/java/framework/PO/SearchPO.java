@@ -1,5 +1,6 @@
 package framework.PO;
 
+import framework.decorator.MyButton;
 import lab12.decorator.MyFieldDecorator;
 //import framework.PO.BookPO;
 import org.openqa.selenium.WebDriver;
@@ -15,33 +16,63 @@ public class SearchPO {
         PageFactory.initElements(new MyFieldDecorator(driver), this);
     }
 
-    @FindBy(xpath = "//*[@id=\"component-browsecategories-browse-categories-%2fsearch\"]/div/a[7]")
-    private WebElement fanfictionButton;
+    @FindBy(xpath = "//*[@id=\"popover-search-color-filter\"]/button")
+    private MyButton filterButton;
 
-    @FindBy(xpath = "//*[@id=\"browse-container\"]/div/header/h1")
-    private WebElement FanfictionLabel;
+    @FindBy(xpath = "//*[@id=\"popover-search-color-filter\"]/div/div/div/div/ul/li[3]/div/div/div[2]/a[5]")
+    private WebElement redFilter;
 
     @FindBy(xpath = "//*[@id=\"app\"]/div/div[3]/div[2]/h1")
     private WebElement notFoundLabel;
 
-    //звернення до драйвера
-    @FindBy(xpath = "//*[@id=\"component-storycardcontainer-story-card-container-%2fsearch%2fwarrior%2520cats\"]/div/div[1]/ul/li[1]/a/div[2]/div[2]/div[1]")
-    private static WebElement chosenBook;
+    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/div[2]/div/div[2]/button[2]")
+    private WebElement applyFilter;
 
-    public void ClickGanre(){
-        fanfictionButton.click();
-    }
+    @FindBy(xpath = "//*[@id=\"popover-search-color-filter\"]/button/span/div")
+    private WebElement filterLabel;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div/div[3]/div[3]/div[4]/div/div/div/div[1]/figure[1]/div/div/a/div/div[2]/div/img")
+    private static WebElement chosenPhoto;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div/div[3]/div[2]/div/div/div[2]/div[2]/div/div[1]/div/a")
+    private static MyButton choosecat;
+
+
+
 
     public boolean LabelCheck(){
-        return FanfictionLabel.isDisplayed();
+        return redFilter.isDisplayed();
     }
 
     public boolean SearchResultCheck(){
         return notFoundLabel.isDisplayed();
     }
 
-//    public static BookPO clickBook(){
-//        chosenBook.click();
-//        return new BookPO(driver);
-//    }
+    public void ClickFilter() {
+        filterButton.TestClick();
+
+    }
+
+    public void ApplyFilter() {
+        applyFilter.click();
+    }
+
+    public void ParamsClick() {
+        redFilter.click();
+
+    }
+
+    public boolean FilterCheck() {
+        return filterLabel.isDisplayed();
+    }
+
+    public static PhotoPO clickPhoto(){
+        chosenPhoto.click();
+        return new PhotoPO(driver);
+    }
+
+    public static CategoryPO chooseCat() {
+        choosecat.TestClick();
+        return new CategoryPO(driver);
+    }
 }

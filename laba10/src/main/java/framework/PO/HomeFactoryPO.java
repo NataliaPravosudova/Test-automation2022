@@ -12,6 +12,8 @@ public class HomeFactoryPO {
     @FindBy(xpath = "//*[@id=\"app\"]/div/header/nav/div[5]/a[1]")
     private MyButton signUpButton;
 
+    @FindBy(xpath = "//*[@id=\"app\"]/div/header/nav/a")
+    private MyButton mainButton;
 
     private WebDriver driver;
     public HomeFactoryPO(WebDriver driver) {
@@ -26,5 +28,11 @@ public class HomeFactoryPO {
     public LoginPO clickLogin() {
         signUpButton.myClick();
         return new LoginPO(driver);
+    }
+
+
+    public void Home() {
+        mainButton.TestClick();
+
     }
 }

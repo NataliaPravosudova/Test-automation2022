@@ -1,1 +1,0 @@
-{"uuid":"adc0c32a-537b-4981-803c-dcfe5a9883cb","name":"laba10","children":["bd9dbdde-5c28-4d4c-bb92-48dc55d2a1d5"],"befores":[],"afters":[{"name":"closeDriver","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1655028265838,"stop":1655028266586}],"start":1655028253608,"stop":1655028266590}

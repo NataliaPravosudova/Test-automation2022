@@ -53,8 +53,16 @@ public class MainTest extends BaseUITest {
         unsplashBO.verifyLogged();
     }
 
-    @Test
-    void SearchTest() {
+    @DataProvider()
+    public static Object[][] SearchDataProvider() {
+        return new Object[][]{
+                {"Grass"},
+                {"Tree"},
+                {"House"}
+        };
+    }
+    @Test(dataProvider = "SearchDataProvider")
+    void SearchTest(String searchWord) {
         //driver.set(new ChromeDriver());
         WebDriver driver = BrowserFactory.getChromedriver();
         //driver.manage().timeouts().implicitlyWait(Duration.of(10, ChronoUnit.SECONDS));
@@ -70,92 +78,105 @@ public class MainTest extends BaseUITest {
 //        unsplashBO.verify();
 //        // Step 4 put Login and password
 //        unsplashBO.putLogin("natalia.pravosudova@gmail.com", "Natalia111");
-        // Step 5 Search field text
-        unsplashBO.inputSearch("Grass");
+        //Step 4 Go to HomePage
+        unsplashBO.homePage();
+        // Step 5 Input search text
+        unsplashBO.inputSearch(searchWord);
         //Step 7 click search Button
         unsplashBO.search();
         //Step 8 verify search is completed
         unsplashBO.verifySearch();
     }
-//
-//
-//    @DataProvider()
-//    public static Object[][] SearchDataProvider() {
-//        return new Object[][]{
-//                {"Warrior cats"},
-//                {"She-ra"},
-//                {"pjfoiejiofje"}
-//        };
-//    }
-//    @Test(dataProvider = "SearchDataProvider")
-//    void SearchWattpadTest(String searchWord) {
-//        driver.set(new ChromeDriver());
-//        UnsplashBO catLifeBO = new UnsplashBO(
-//                driver.get()
-//        );
+
+
+    @Test
+    void SearchFilterTest() {
+        //driver.set(new ChromeDriver());
+        UnsplashBO unsplashBO = new UnsplashBO(
+                driver.get()
+        );
 //        // Step 1 "Go to website"
-//        catLifeBO.goToHome();
+//        unsplashBO.goToHome();
 //        // Step 2 "Click"
-//        catLifeBO.loginClick();
+//        unsplashBO.loginClick();
 //        // Step 3 "verify"
-//        catLifeBO.verify();
+//        unsplashBO.verify();
 //        // Step 4 put Login
-//        catLifeBO.putLogin("kate_newAT", "12022002kate");
-//        //Step 5 Input search word
-//        catLifeBO.inputSearch("searchWord");
-//        //Step 6 click search
-//        catLifeBO.search();
-//    }
-//
-//    @Test
-//    void AddBook(){
-//        driver.set(new ChromeDriver());
-//        WebDriver driver = BrowserFactory.getChromedriver();
-//        driver.manage().timeouts().implicitlyWait(Duration.of(10, ChronoUnit.SECONDS));
-//        UnsplashBO catLifeBO = new UnsplashBO(
-//                driver
-//        );
+//        unsplashBO.putLogin("natalia.pravosudova@gmail.com", "Natalia111");
+        //Step 4 Go to HomePage
+        unsplashBO.homePage();
+        //Step 5 Input search word
+        unsplashBO.inputSearch("Grass");
+        //Step 6 click search button
+        unsplashBO.search();
+        //Step 7 click filter button
+        unsplashBO.filter();
+        //Step 8 set filter params
+        unsplashBO.setParams();
+        //Step 8 apply filter
+        //unsplashBO.filterApply();
+        //Step 9 verify filter is aplied
+        unsplashBO.verifyFilter();
+    }
+
+    @Test
+    void LzOpenPhoto(){
+        //driver.set(new ChromeDriver());
+        WebDriver driver = BrowserFactory.getChromedriver();
+        //driver.manage().timeouts().implicitlyWait(Duration.of(10, ChronoUnit.SECONDS));
+        UnsplashBO unsplashBO = new UnsplashBO(
+                driver
+        );
 //        // Step 1 "Go to website"
-//        catLifeBO.goToHome();
+//        unsplashBO.goToHome();
 //        // Step 2 "Click"
-//        catLifeBO.loginClick();
+//        unsplashBO.loginClick();
 //        // Step 3 "verify"
-//        catLifeBO.verify();
+//        unsplashBO.verify();
 //        // Step 4 put Login
-//        catLifeBO.putLogin("kate_newAT", "12022002kate");
-//        //Step 5 Input search word
-//        catLifeBO.inputSearch("Warrior cats");
-//        //Step 6 click search
-//        catLifeBO.search();
-//        //Step 7 click on the book
-//        catLifeBO.chooseBook();
-//        //Step 8 Adding book to library
-//        catLifeBO.AddBookToLibrary();
-//        //Step 9 check if the book in the library
-//        catLifeBO.CheckTheBookInLibrary();
-//    }
-//
-//    @Test
-//    void DeleteBook(){
-//        driver.set(new ChromeDriver());
-//        WebDriver driver = BrowserFactory.getChromedriver();
-//        driver.manage().timeouts().implicitlyWait(Duration.of(10, ChronoUnit.SECONDS));
-//        UnsplashBO catLifeBO = new UnsplashBO(
-//                driver
-//        );
+//        unsplashBO.putLogin("natalia.pravosudova@gmail.com", "Natalia111");
+        //Step 4 go to homepage
+        unsplashBO.homePage();
+        //Step 5 Input search word
+        unsplashBO.inputSearch("Ukraine");
+        //Step 6 click search
+        unsplashBO.search();
+        //Step 7 click on the image
+        unsplashBO.chooseIMG();
+        //Step 8 check if the photo is opened
+        unsplashBO.VerifyPhoto();
+        //Step 9 close photo
+        unsplashBO.closePhoto();
+    }
+
+    @Test
+    void MCheckRelatedCategory(){
+        //driver.set(new ChromeDriver());
+        WebDriver driver = BrowserFactory.getChromedriver();
+        //driver.manage().timeouts().implicitlyWait(Duration.of(10, ChronoUnit.SECONDS));
+        UnsplashBO unsplashBO = new UnsplashBO(
+                driver
+        );
 //        // Step 1 "Go to website"
-//        catLifeBO.goToHome();
+//        unsplashBO.goToHome();
 //        // Step 2 "Click"
-//        catLifeBO.loginClick();
+//        unsplashBO.loginClick();
 //        // Step 3 "verify"
-//        catLifeBO.verify();
+//        unsplashBO.verify();
 //        // Step 4 put Login
-//        catLifeBO.putLogin("kate_newAT", "12022002kate");
-//        //Step 9 check if the book in the library
-//        catLifeBO.CheckTheBookInLibrary();
-//        //Step 10 Delete the Book from library
-//        catLifeBO.DeleteBook();
-//    }
+//        unsplashBO.putLogin("natalia.pravosudova@gmail.com", "Natalia111");
+        //Step 4 go to homepage
+        unsplashBO.homePage();
+        //Step 5 Input search word
+        unsplashBO.inputSearch("House");
+        //Step 6 click search button
+        unsplashBO.search();
+        //Step 5 check if the book in the library
+        unsplashBO.ChooseCategory();
+        //Step 6 Verify category is open
+        unsplashBO.VerifyCategory();
+    }
+
 //    @AfterTest
 //    void CloseDriver(){
 //        driver.get().quit();
