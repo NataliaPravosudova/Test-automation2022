@@ -29,11 +29,13 @@ import java.time.temporal.ChronoUnit;
 })
 public class MainTest extends BaseUITest {
     private ThreadLocal<WebDriver> driver = new InheritableThreadLocal<>();
+    //private ThreadLocal<WebDriver> IEdriver = new InheritableThreadLocal<>();
     @Test
     @Video
     void LoginUnsplashTest() {
         WebDriver driver = BrowserFactory.getChromedriver();
-        driver.manage().timeouts().implicitlyWait(Duration.of(10, ChronoUnit.SECONDS));
+        WebDriver IEdriver = BrowserFactory.getIEdriver();
+        //driver.manage().timeouts().implicitlyWait(Duration.of(10, ChronoUnit.SECONDS));
         UnsplashBO unsplashBO = new UnsplashBO(
                 driver
         );
@@ -92,8 +94,9 @@ public class MainTest extends BaseUITest {
     @Test
     void SearchFilterTest() {
         //driver.set(new ChromeDriver());
+        WebDriver driver = BrowserFactory.getChromedriver();
         UnsplashBO unsplashBO = new UnsplashBO(
-                driver.get()
+                driver
         );
 //        // Step 1 "Go to website"
 //        unsplashBO.goToHome();
@@ -157,14 +160,14 @@ public class MainTest extends BaseUITest {
         UnsplashBO unsplashBO = new UnsplashBO(
                 driver
         );
-//        // Step 1 "Go to website"
-//        unsplashBO.goToHome();
-//        // Step 2 "Click"
-//        unsplashBO.loginClick();
-//        // Step 3 "verify"
-//        unsplashBO.verify();
-//        // Step 4 put Login
-//        unsplashBO.putLogin("natalia.pravosudova@gmail.com", "Natalia111");
+        // Step 1 "Go to website"
+        unsplashBO.goToHome();
+        // Step 2 "Click"
+        unsplashBO.loginClick();
+        // Step 3 "verify"
+        unsplashBO.verify();
+        // Step 4 put Login
+        unsplashBO.putLogin("natalia.pravosudova@gmail.com", "Natalia111");
         //Step 4 go to homepage
         unsplashBO.homePage();
         //Step 5 Input search word

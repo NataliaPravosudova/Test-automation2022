@@ -2,6 +2,8 @@ package framework.decorator;
 
 import org.openqa.selenium.WebElement;
 
+import java.util.Objects;
+
 public class MyInput extends Element {
 
     public MyInput(WebElement webElement) {
@@ -15,7 +17,7 @@ public class MyInput extends Element {
     }
 
     public void inputNotNull(String inputText){
-        if(inputText == ""){
+        if(Objects.equals(inputText, "")){
             System.out.println("You have to input smth!!!");
         }
         else{
