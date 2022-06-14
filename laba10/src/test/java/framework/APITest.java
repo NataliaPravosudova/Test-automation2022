@@ -27,13 +27,12 @@ import framework.APIBO;
             apiBO.checkEqual(200, statusCode);
         }
 
-
         @Test
         void addUser(){
             //Step 1 get current length of array
             Integer length = apiBO.getLength("http://localhost:8000/users");
             //Step 2 add user
-            apiBO.apiAdd("{\"name\": \"Natalia\", \"role\": \"Dev\", \"email\": \"Natalia@gmail.com\", \"status\": \"jun\"}");
+            apiBO.apiAdd("{\"name\": \"Natalia\", \"job\": \"Dev\", \"age\": \"20\", \"status\": \"jun\"}");
             //Step 3 get updated length
             Integer newLength = apiBO.getLength("http://localhost:8000/users");
             //Step 4 check 2 lengths
@@ -72,4 +71,23 @@ import framework.APIBO;
         }
 
 
+        @DataProvider()
+        public static Object[][] UpdateData() {
+            return new Object[][]{
+                    {"name", "NEW_NAME_3", 3},
+                    {"job", "NEW_JOB_12", 12},
+                    {"age", "NEW_AGE_6", 6},
+            };
+        }
+        @Test(dataProvider = "UpdateData")
+        void updateEmployeesTest(String key, String new_value, Integer id){
+            //Step 1 Updating info
+            apiBO.updateUser("{\""+key+"\": \""+new_value+"\"}", id);
+            //Step 2 getting new info
+            String updated = apiBO.getKey(key, apiBO.getOneUser(id));
+            //Step 3 checking new info
+            Assert.assertEquals(updated, new_value);
+        }
     }
+
+

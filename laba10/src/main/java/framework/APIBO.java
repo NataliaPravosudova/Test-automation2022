@@ -54,5 +54,16 @@ public class APIBO {
         apiRequests.updateMethod(info, id);
     }
 
+    @Step
+    public Response getOneUser(Integer id){
+        return apiRequests.getMethod("http://localhost:8000/users/"+id);
+    }
+
+    @Step
+    public String getKey(String key, Response newUser){
+        JsonPath jsnPath = newUser.jsonPath();
+        String keyValue = jsnPath.get(key);
+        return keyValue;
+    }
 
 }
